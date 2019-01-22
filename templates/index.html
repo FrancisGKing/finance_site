@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Stocks</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Total Value</th>
+                <th scope="col">Buy/Sell?</th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{ stock["stock"] }}</td>
+                <td>{{ stock["number"] }}</td>
+                <td>{{ stock["price"] | usd}}</td>
+                <td>{{ stock["total"] | usd }}</td>
+                <td>
+                    <form action="#" method="POST">
+                        <input type="hidden" name="stock" value="{{ stock.stock }}">
+                        <input type="number" name="shares" placeholder="Shares">
+                        <button class="btn btn-primary" type="submit" value="buy" formaction="/buy">Buy</button>
+                        <button class="btn btn-primary" type="submit" value="sell" formaction="/sell">Sell</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br></br>
+    <h1>You currently have {{ cash | usd}} to spend.</h1>
+    <br></br>
+    <h1>The total vaule of your cash and stocks is {{totalval | usd}}</h1>
+{% endblock %}
