@@ -26,7 +26,7 @@
                 <td>
                     <form action="#" method="POST">
                         <input type="hidden" name="stock" value="{{ stock.stock }}">
-                        <input type="number" name="shares" placeholder="Shares">
+                        <input type="number" min="1" name="shares" placeholder="Shares">
                         <button class="btn btn-primary" type="submit" value="buy" formaction="/buy">Buy</button>
                         <button class="btn btn-primary" type="submit" value="sell" formaction="/sell">Sell</button>
                     </form>
